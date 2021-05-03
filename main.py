@@ -11,7 +11,6 @@ def run_inference(image):
 	try:
 		print("image to be inferred is:",image)
 		prediction = infer(image)
-		print("hello")
 		return prediction
 	except OSError as ose:
 		return "File Not Found: Please load image, " + image + ", in images/ directory"
