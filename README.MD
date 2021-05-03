@@ -11,4 +11,4 @@ Steps to create and run docker containers (ensure that the docker daemon is runn
 
 Steps to check inference on images (once docker is running and previous step is executed):
 1. Download the image to run inference on (eg. image.jpg)
-2. Run the command `curl -F "file=@image.jpg" http://localhost:5000/upload` to get the prediction (class of object in the image)
+2. Run the command `curl http://localhost:5000/inference/image.jpg` to get the prediction (class of object in the image)
