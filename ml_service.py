@@ -4,6 +4,7 @@ from torchvision import transforms
 
 def infer(image):
     model = torch.hub.load('pytorch/vision:v0.9.0', 'densenet121', pretrained=True)
+    model.eval()
     file_path = build_file_path(image)
     input_image = Image.open(file_path)
     trial = torch.tensor([[1., -1.], [1., -1.]])
@@ -30,11 +31,12 @@ def infer(image):
     # print(output[0])
     # The output has unnormalized scores. To get probabilities, you can run a softmax on it.
     probabilities = torch.nn.functional.softmax(output[0], dim=0)
+    print(probabilities)
 
     with open("imagenet_classes.txt", "r") as f:
         categories = [s.strip() for s in f.readlines()]
     # Show top categories per image
-    top_prob, top_catid = torch.topk(probabilities, 5)
+    top_prob, top_catid = torch.topk(probabilities, 1)
     for i in range(top_prob.size(0)):
         print(categories[top_catid[i]], top_prob[i].item())
     prediction = categories[top_catid[0]]
