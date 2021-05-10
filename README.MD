@@ -8,4 +8,4 @@ Steps to check inference on images (once docker is running and previous step is 
 2. Run the command `curl http://localhost:5000/inference/dog.jpg` or any other image of your choice to get the prediction (class of object in the image)
 
 Note:
-Docker Image Link can be found in docs/
+Docker Image Link can be found in docs/Docker_Container_Document.pdf
